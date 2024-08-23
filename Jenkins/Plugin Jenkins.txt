@@ -1,0 +1,8 @@
+
+| Timestamp                  | yy-MM-dd_HH_mm | Change date pattern UTC |
+| -------------------------- | -------------- | ----------------------- |
+| Nexus Artifact Uploader    |                |                         |
+| SonarQube Scanner          |                |                         |
+| Pipeline Maven Integration |                |                         |
+| Pipeline Utility Steps     |                |                         |
+for Notification: Slack Notification

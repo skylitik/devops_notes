@@ -1,0 +1,16 @@
+Name - vprofile-QG
+add condition -> on overall code
+Quility gate fails when -> bugs 
+Value = 60
+######
+
+Link to Project
+Project settings > quality gate > select Qgate
+#####
+
+Webhooks > create
+Name: jenkins-ci-webhook
+Jenkins Private Url: http://172.31.18.31:8080/sonarqube-webhook
+
+Check Security Group for Jenkins
+Sonarqube port 8080

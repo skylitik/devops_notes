@@ -1,0 +1,18 @@
+
+Maven:
+Maven dependencies
+
+apt:
+Packages for debianbased systems
+
+yum:
+Packages for RedHat based systems
+
+nuget:
+Package manager for .NET
+
+Npm:
+package manager for JavaScript
+
+Docker:
+Registry to store Docker Images

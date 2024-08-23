@@ -1,0 +1,26 @@
+Login to Nexus server
+Create Repositories (If you're usecase is to download a dependencies from the repository, then use set proxy)
+maven2 hosted
+named it> Create
+#####
+Manage Jenkins server
+Credentials>System>Global>Add Credential
+#####
+username>admin
+Pass>pass
+id & description>nexuslogin
+###
+Edit code Paac_Nexus> add Stage
+Timestamp plugin edit in Jenkins server
+####
+Config>edit build timestamp
+pattern:
+yy-MM-dd_HH-mm
+
+#####
+Change in Jenkins:
+SonarQube servers ip public to private (SonarQube servers)
+Select Token
+####
+
+In Sonarqube server change Webhook ip public to private
