@@ -1,0 +1,8 @@
+Name: sonar
+Url: public ip of server sonar
+
+######
+
+Jenkins Credential Provider: Jenkins
+Kind: Secret Text
+Secret:

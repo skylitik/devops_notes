@@ -1,0 +1,2 @@
+To #export variable for user we put export variable in `~/.bash file`
+To export variable for All users we put export variable command in `/etc/*profile file*`

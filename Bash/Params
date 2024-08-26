@@ -1,0 +1,10 @@
+-e - Edit
+-eq - Equal to
+-gt - Grater than
+-lt - Less than
+-p - Promt from user
+-s - Suppress the input
+& - And Parametr
+fi - Closing
+echo $? - exit code
+sleep - Command that pause execute with parameter 1,2,3.... sec

@@ -1,0 +1,16 @@
+Intro
+* Automate pipeline setup with Jenkinsfile
+* Jenkinsfile defines Stages in CI/CD Pipeline
+* Jenkinsfile is a text file with Pipeline DSL Syntax
+* Similar to groovy
+* Two syntax
+	* Scripted
+	* Declarative
+
+----
+# Pipeline Concepts
+
+* Pipeline
+* Node/Agent
+* Stage
+* Step

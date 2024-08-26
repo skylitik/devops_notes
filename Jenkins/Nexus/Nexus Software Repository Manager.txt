@@ -1,0 +1,6 @@
+Key Points:
+* Runs on java
+* Used to store artifacts
+* Used as a Package manager for dependencies
+* Opensource & Enterprise Versions
+* Supports Variety of repo like maven,apt,docker,Ruby gems etc

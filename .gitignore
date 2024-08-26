@@ -1,0 +1,6 @@
+#ignoring folders
+Vagrant/
+
+#package
+*.rar
+*.zip

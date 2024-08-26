@@ -1,0 +1,26 @@
+
+| JDK       |                                        |
+| --------- | -------------------------------------- |
+| Name      | OracleJDK11                            |
+| Java_Home | /usr/lib/jvm/java-1.11.0-openjdk-amd64 |
+
+| Maven   |        |
+| ------- | ------ |
+| Name    | MAVEN3 |
+| Version | 3.9.3  |
+
+
+| SonarQube Scanner |            |     |
+| ----------------- | ---------- | --- |
+| Name              | sonar4.7   |     |
+| Version           | 4.7.0.2747 |     |
+
+
+Slack
+Kind: secrettext
+Token:
+Id & description:slacktoken
+Channel:#jenkinscicd
+
+
+

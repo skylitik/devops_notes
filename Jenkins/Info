@@ -1,0 +1,4 @@
+All data store in /var/lib/jenkins/
+InitialAdminPass stored in /var/lib/jenkins/secrets/initailAdminPassword
+id jenkins <- user
+to check from browser > ip:port number
