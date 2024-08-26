@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Fetch Code') {
             steps {
-                git branch: 'vp-rem', url: 'https://github.com/devopshydclub/vprofile-repo.git'
+                git branch: 'vp-rem', url: 'https://github.com/devopshydclub/vprofile-project.git'
             }
         }
         stage('Build'){

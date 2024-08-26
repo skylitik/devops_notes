@@ -1,0 +1,49 @@
+Install docker engine in Jenkins
+ * add jenkins user to docker group & reboot
+Install AWS cli
+IAM user with ecr permission
+Create ECR repo
+Plugins
+ * ECR,docker pipeline, aws skd for credentials
+Store aws credentials in jenkins
+Run the pipeline 
+
+
+---------------------------------
+|Install docker engine in Jenkins|
+---------------------------------
+- connect to Jenkins server
+- $sudo apt update && apt install awscli -y
+- search for Docker Engine installattion
+- switch to jenkins user {$su - jenkins}
+- add jenkins user to root {$usermod -a -G docker jenkins}
+- $id jenkins
+- reboot
+
+---------------------------------
+|IAM user with ecr permission   |
+---------------------------------
+- User - jenkins
+- Policy: [registry]AmazonEC2ContainerRegistryFullAccess, [ecs]AmazonECS_FullAccess
+- User created > go to create access Key (CLI)
+
+---------------------------------
+|Create ECR repo                |
+---------------------------------
+Ecr > Repositories
+Private 
+Name/vprofileappimg>create
+
+
+---------------------------------
+|Install Plugins                |
+---------------------------------
+- Go to Jenkins server > Plugins > Docker Pipeline, ECR, aws sdk all, CloudBees Docker Build an Publish
+- After install > Manage Credentials Jenkins> new Cred> choose AWS Cred :
+    *ID:awscreds
+    *Descr:awscreds
+    *access key:<from IAM user jenkins>
+    *secret:<from IAM user>
+---------------------------------
+|Run the pipeline                |
+---------------------------------
