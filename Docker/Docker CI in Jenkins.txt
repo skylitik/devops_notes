@@ -45,5 +45,5 @@ Name/vprofileappimg>create
     *access key:<from IAM user jenkins>
     *secret:<from IAM user>
 ---------------------------------
-|Run the pipeline                |
+|Run the pipeline script         |
 ---------------------------------
