@@ -8,8 +8,8 @@ pipeline{
             registryCredential = 'ecr:us-east-1:awscreds'
             appRegistry = "009160056497.dkr.ecr.us-east-1.amazonaws.com/vprofileappimg"
             vprofileRegistry = "https://009160056497.dkr.ecr.us-east-1.amazonaws.com"
-            cluster = "clustername"
-            service = "servicename"
+            cluster = "vprofile_2"//clustername
+            service = "vprofileappsvc"//servicename
         }
     stages {
         stage('Fetch code'){

@@ -1,0 +1,24 @@
+Popular triggers
+--------
+* Git Webhook
+* Poll SCM
+* Scheduled jobs
+* Remote triggers
+* Build after other projects are Build
+
+----------------------------------------
+Steps
+----------------------------------------
+* Create git repo
+* SSH auth
+* Create a Jenkinsfile in git repo & commit
+* Create Jenkins job to access Jenkisnfiel from git repo
+* Test triggers
+________________________________________________________
+Create SSH key:
+- In git Bash > ssh-keygen.exe \
+- ls ~/.ssh/
+- cat ~/.ssh/id_rsa.pub
+--------------------------------------------------------
+Create Repo and clone it to PC in gitbash
+--------------------------------------------------------

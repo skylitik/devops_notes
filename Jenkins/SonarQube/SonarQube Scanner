@@ -1,6 +1,8 @@
 Name: sonar
-Url: public ip of server sonar
+Url: public(private) ip of server sonar
 
+######
+create MySonarToken for Jenkins integration
 ######
 
 Jenkins Credential Provider: Jenkins
