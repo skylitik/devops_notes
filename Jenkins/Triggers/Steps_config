@@ -22,3 +22,93 @@ Create SSH key:
 --------------------------------------------------------
 Create Repo and clone it to PC in gitbash
 --------------------------------------------------------
+Add simple pipeline code
+__________________________
+When first add to Jenkins from git, configure Global Security> HostKEy Verification Config> accept first connection
+---
+add pipeline> script from SCM>Creds>Jenkins>ssh username with private key> id and secret>account username> enter key directly(cat ~/.ssh/id_rsa)
+
+Test triggers
+
+#######################
+Git Webhooks
+######################
+Copy Jenkins url with port to github webhooks (ex. http://3.94.211.198:8080/github-webhook/)
+json format
+-----------
+in Jenkins project > build triggers> check \/ Github hook triggers
+Now you can edit in PC folder github repository's folder or add file <You can see changes in Jenkins build>
+
+##########################
+Poll SCM
+##########################
+In jenkins choose Pooling SCM> add * * * * * (every hour and others)
+Everything in Cron job format
+
+##########################
+Scheduled jobs
+##########################
+Build Periodically > 30 20 * * 1-5 (Everyday at night, no weekends)
+
+##########################
+Remote triggers
+##########################
+Generate JOB URL
+- Job Configure => Build Triggers
+- Check mark on "Triggers builds remotely"
+- Give a token name
+
+Generate Token for User
+- Click your username drop down button
+- Configure => API Token => Generate
+- Copy token name and save username:tokenname in a file
+
+Generate CRUMB
+- wget command is required for this, so download wget binary for git bash
+- Extract in c:/program files/Git/mingw64/bin
+- Run below command in Git Bash, (replace username, password, Jenkins URL)
+#wget -q --auth-no-challenge --user username --password password --output-document - 'http://JENNKINS_IP:8080/crumblssuer/api/xml?path=concat(//crumbRequestField,":",//crumb)'
+- Save the token in file
+
+Build Job form URL
+By now we should have below details
+- Jenkins Job URL with token
+EG:http://ip:port/job/profile/build
+
+- API Token
+- USERNAME:API_TOKEN
+EG: admin:g5jk34g5j43235b2jlb54323n2ng6j90
+
+- Crumb
+EG: Jenkins-Crumbl:fdsf4443g53g54g54g
+- Fill all the above details in below URL and Execute
+# curl -I -X POST http://username:APItoken @Jenkins_IP:8080/job/JOB_NAME/build?token=TOKENNAME -H "Jenkins-Crumb:CRUMB"
+
+job project in Jenkins> build triggers> trigger build remotely> name token('mybuildtoken')
+JENKINS_URL/job/Build/build?token=TOKEN_NAME
+http://3.94.211.198:8080/job/Build/build/?token=mybuildtoken
+
+token is in Jenkins configure and generate token: eg: admin:115127a70d6276a240a6fd97e693ad313a
+install on windows wget for gitbash : https://eternallybored.org/misc/wget/
+Crumb
+ wget -q --auth-no-challenge --user admin --password SF9yZv06Yv8uh7iVjAjM --output-document - 'http://3.94.211.198:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+Sample output: Jenkins-Crumb:97a4f6748139ccf9a3d43ca93b10a43d318d5aa6481205f7f1f9692a827cd5d8
+
+then>>
+curl -I -X POST http://admin:115127a70d6276a240a6fd97e693ad313a@3.94.211.198:8080/job/Build/build/?token=mybuildtoken -H "Jenkins-Crumb:97a4f6748139ccf9a3d43ca93b10a43d318d5aa6481205f7f1f9692a827cd5d8"
+
+go to git bash > paste it
+
+
+
+#############################
+Build after other projects are Build
+####################################
+In Jenkins >> freestyle project
+Add Execute SHell
+Input sh commands
+after that go to source comand Managment >check build after other projects are build
+Build other project, after that end
+
+
+

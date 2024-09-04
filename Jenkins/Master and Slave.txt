@@ -1,0 +1,41 @@
+Use Cases:
+- Load Distribution
+* Jenkins Master Executes
+* Build Job on Node it selected
+
+- Cross Platform Biulds
+* Executing Build of other platforms like .net, IOS, from Jenkins Master(Liux)
+
+- Software Testing
+* Execute Testers Testers
+* Automation Scripts from Node
+###############################
+
+Prerequisities for Node Setup
+- Any OS
+- Network access from Master 
+    * note:Check Firewall rules
+- Java, JRE, JDK
+- User
+- Directory with User ownership
+- Tools as required by the Jenkins job (Maven, Ant, Git , etc)
+
+#################################################################
+- Create Instance (Slave server, Ubuntu, other SG, key > jenkey)
+- Login bash> update && install openjdk-11-jdk -y
+- Create user > adduser devops
+- Create directory mkdir /opt/jenkins-slave
+- Change ownership of directory: chown devops.devops /opt/jenkins-slave -R
+- Enable password login ssh: vim /etc/ssh/sshd_config > change Password authentification > yes and del #
+- systemctl restart ssh
+Jenkins => SSH => Node
+#########################
+Go to Jenkins => Nodes > nameit> number of executors = 5
+- Remote root dir : /opt/jenkins-slave
+- Labels - SILVER
+- Usage: in Windows => Only build jobs with labels expr, but normal is ..as much as possible
+- Lunch method: SSH
+- host slaves ip
+- update SG slave > 22 from Jenkins SG
+- creds with username pass (from slaves machine) id = whatever
+- Hostkey Verification Strategy - non Verification
