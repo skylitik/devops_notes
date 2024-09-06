@@ -1,0 +1,558 @@
+Securing Jenkins
+- User Login
+- Jenkins own database
+- Sign up
+- LDAP Integration
+--------------------------------
+Permissions on Jenkins
+- Admin
+- Read
+- jobs
+- Credentials
+- Plugins etc
+-------------------------------
+Permissions on jobs
+- View
+- Build
+- Delete
+- Configure
+- etc
+####################################
+Config on Jenkins Global Security> Sec Realm >Allow Users to sign up
+
+
+https://visualpath.in/devopstutorials/devops
+
+using admin user and
+
+doing whatever we can in the Jenkins.
+
+Once you create a pipeline, you may handle it over to
+
+the developers or the testers or ops or non ops team.
+
+How much privilege do you want them to have?
+
+Do you want them complete privilege?
+
+Like if you're using Jenkins at an organization level
+
+and there are multiple projects, CICD pipelines running from
+
+Jenkins, then you don't want a non admin to
+
+get an admin access and have complete privilege.
+
+So you can fine tune authentication and authorization.
+
+In Jenkins, authentication is login,
+
+authorization is the privilege.
+
+So don't share login details, don't
+
+give full access to other people.
+
+You can create a user can sign up themselves on
+
+the Jenkins, or you can even integrate Jenkins with LDAP.
+
+So if you have LDAP integration, so all the users
+
+that are in your company and your project in the
+
+Active Directory can log in to the Jenkins.
+
+But that's login, it's authentication.
+
+We can decide how much authorization they
+
+have, how much privilege do they have.
+
+So we can give permission on the Jenkins, like they
+
+have admin access or read access, or access on the
+
+jobs, or access on the credentials or plugins.
+
+So you can fine tune that.
+
+But again, that will be for the entire Jenkins.
+
+If you have multiple projects, you don't
+
+want a developer from Project A to
+
+access content of Project B, right?
+
+So you have also permission on the jobs.
+
+You can decide a user can access how many jobs
+
+and what a user can do on that job.
+
+You can give just view access, or you can give
+
+build access, you can give configure access, or you can
+
+also add all the users in a role.
+
+You can create a role with some privilege and you
+
+can give that to a user or a group.
+
+So let's see how that can be done.
+
+Okay, so I'm going to use two browsers in this
+
+Internet Explorer or the Edge browser where I'm logged in
+
+currently with admin user, and I will also have Firefox
+
+browser from where I'll test the logins first.
+
+Let's go to manage Jenkins.
+
+And in the security section
+
+you have configured global security.
+
+Okay, so first you have authentication.
+
+So who can login?
+
+See a few options.
+
+Here you have delegate to server container.
+
+We don't want to do that.
+
+We have Jenkins on user database,
+
+so user can sign up themselves.
+
+So when someone access the URL, they'll get a
+
+sign up button and they can sign up with
+
+their credentials and then they can log in.
+
+The other option is LDAP.
+
+And this will be good if you're using
+
+Jenkins for an organization, there will be many
+
+users, employees in an organization, and they'll be
+
+already into the Active Directory or any centralized
+
+authentication mechanism like that.
+
+So you can get the details from the It
+
+team about the server and all the other details.
+
+You can fill that and save this.
+
+So then the users from LDAP can log in to Jenkins.
+
+So these are really two good options.
+
+We are not going to see the LDAP,
+
+we're just seeing Jenkins on user database.
+
+The other option for authentication is the
+
+operating system user and group, which I
+
+really don't recommend, that should be separate.
+
+So we'll go with this allow users to sign up.
+
+Then once the user is logged in,
+
+what the user can do, authorization.
+
+So you have some really funny options here.
+
+Anyone can do anything, which is really no
+
+security legacy mode, which enables anonymous access.
+
+You have logged in, users can do anything.
+
+Now, if you combine that with allow users to sign up, so
+
+anybody can sign up and then they can log in and do
+
+anything, which is not a good option, not at all.
+
+You have just two good options here.
+
+Matrix based security.
+
+So this is fine tuning permission at the Jenkins level.
+
+So what a user can do, let's say if
+
+you say add, you give a user name and
+
+you can decide what this user can do.
+
+If you check mark this administrator full access.
+
+And I will keep that because that's
+
+the user I have admin user.
+
+But if you see you have credentials
+
+section, you have Agent Job section.
+
+So a user, you can give permission.
+
+Like a user can build or
+
+cancel configure, create like that.
+
+You can fine tune.
+
+So I'm going to save this first, all right?
+
+And now I'm going to use the Firefox browser
+
+and use this URL to login or sign up.
+
+Okay?
+
+So from Firefox, where I'm not logged in with any
+
+user, and now I get a button, create an account.
+
+So I click on that and I'll give
+
+a username, I will give my name there
+
+and I'll just give some fake email address.
+
+Okay, just showing you.
+
+OK, so create account.
+
+OK, it says success.
+
+The account is created.
+
+The user detail goes to the Jenkins database.
+
+I say go back to the top page.
+
+I click on this and I don't have any permission.
+
+Okay, overall or read permission is missing.
+
+Now let's give this user some privilege. Okay?
+
+So back to my edge browser.
+
+I will go to configure global security.
+
+So I will say add user.
+
+I will give the username.
+
+So if user already exists, you should see it like that.
+
+But if you're trying to add a user, let's say
+
+I'm trying to add a user name, let's say DevOps.
+
+If the user does not exist in
+
+the database, you will see like that. Okay?
+
+Cross mark. So you can do that.
+
+You can add user gives permission
+
+and then user can sign up.
+
+But that really goes against the ethics.
+
+So have the user sign up and
+
+then you can give the privilege.
+
+So first I will say read privilege. Okay?
+
+Overall read.
+
+Let me save this.
+
+So this read privilege is really pointless.
+
+Okay, back to Firefox browser where
+
+I'm logged in as user.
+
+Let's refresh, you see?
+
+Yeah, that's the read permission.
+
+As I said, pointless. There's really nothing.
+
+Okay, let's add some more permission.
+
+Okay, so I'm going to say I want to give
+
+this user permission on the job so this user can
+
+build the job, cancel the job, cannot configure.
+
+Oh yeah, I see.
+
+Can configure, can create but cannot delete.
+
+Okay, I'll remove the delete
+
+read also in the workspace.
+
+Okay, selectively.
+
+Okay, now let's check.
+
+Okay, now the user has access to all the
+
+jobs and that is the problem with this.
+
+Now if it's just for a project users
+
+that belongs to that project itself, you have
+
+just those projects job, then this is fine.
+
+If there are other projects also the user will get access
+
+to other projects also, which is not a good idea.
+
+So let's see the next one.
+
+Okay, we'll say here now
+
+project based metrics authorization strategy.
+
+My god, that's a long name.
+
+Okay, anyway, select that, add your user.
+
+I'm adding the user and we have
+
+to give first the read access.
+
+That's the minimum you have to
+
+give and you have to save.
+
+And you know what the read access really means?
+
+It's nothing.
+
+Now you can go to a job.
+
+Let's say I want user to get
+
+access to this build test job.
+
+I go to this job, I'm still logged
+
+in here in the edge admin user.
+
+Okay, now you get an option here
+
+enable project based security and now you
+
+can decide what user can access this.
+
+So I will say team run user should have
+
+on the you have credentials, I'll select all of
+
+them and then I'll remove maybe delete.
+
+Even if I remove this user has configured access,
+
+this user can open the job and do anything.
+
+OK, delete or I'll remove the configure also.
+
+Okay, so this reuser cannot delete anything
+
+or can't even configure this job.
+
+This is only for this job build test job.
+
+Okay, now let's go to Firefox.
+
+Okay, see now imran user gets
+
+access only to that particular job.
+
+Now it has to be job specific.
+
+Sure it may take more time but it
+
+is the tightest security that you can do.
+
+Now also if you want you can create like if
+
+you have many users, you can create a role and
+
+you can add user into that role or you can
+
+give user that roles that comes with a plugin.
+
+So let's go to manage plugins.
+
+Okay, so the plugin name
+
+is role based authorization strategy.
+
+I just typed role and it's showing up.
+
+Okay, it's one very popular plug in where you
+
+can create a role with some privilege and then
+
+you can give this role to users so you
+
+don't have to individually give permission to a user.
+
+Okay, let's go to dashboard manage.
+
+Jenkins okay, now we should get one
+
+new option here, configure global security.
+
+Okay, you get a new option here, role based strategy.
+
+You click on that and that's it.
+
+Just save this.
+
+We'll have a different page to set up that okay.
+
+So you get here, manage and
+
+assign roles in the security section.
+
+And here you can see manage roles
+
+and you can create a role.
+
+Let's say I want to add a role named DevOps.
+
+Scroll horizontally, say add and let's
+
+give some privilege to it, okay?
+
+So maybe at the job level, build,
+
+cancel, configure, create, delete, discover Movespace, okay?
+
+Not delete.
+
+Let's not give delete on the run, on the
+
+view, on the agent as per the requirement agents.
+
+Also I'll give full permission, credentials, just
+
+view permission and overall read access.
+
+So let's say I've created a
+
+role named DevOps with some privilege.
+
+Let's save this.
+
+Now we can add user into the role. Okay?
+
+I come into assign role section, I will
+
+give the user name and now I can
+
+select this user belongs to which role.
+
+I will say DevOps role.
+
+So if you have many roles, you'll
+
+see all the roles over here.
+
+So it's pretty easy to
+
+manage from this dashboard, right?
+
+You can set already the roles.
+
+Whenever a user signs up, you can select that
+
+user and add it into a particular role.
+
+All right, let's see if this coming back to firefox.
+
+Now you see the user is having the
+
+role and that role has some privileges.
+
+Okay?
+
+Now one last thing in this, you
+
+have now a new option, manage users.
+
+So you can add user yourself.
+
+This goes into the Jenkins own database.
+
+So you can say create user.
+
+You can give a user name.
+
+I will say Sheldon, like from Big Bang Theory@don.com.
+
+Okay, so I gave some information about the
+
+user and I say create user
+
+And then you can do the
+
+authorization of this user, right? Not here.
+
+You have to go into the configured
+
+global security and you can add this
+
+user and give the right privilege here.
+
+If you want, you can reset the user.
+
+You can give the public key upload
+
+the public keys if you want.
+
+Key based logins.
+
+OK, that's one new thing in the
+
+Jenkins we can add users now.
+
+Previously it was only sign up.
+
+Alright, so that is all in
+
+Jenkins security authentication and authorization.
+
+So wrap this up and join me in the next video.

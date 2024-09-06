@@ -27,6 +27,8 @@ Prerequisities for Node Setup
 - Create directory mkdir /opt/jenkins-slave
 - Change ownership of directory: chown devops.devops /opt/jenkins-slave -R
 - Enable password login ssh: vim /etc/ssh/sshd_config > change Password authentification > yes and del #
+- EDIT: go to /etc/ssh/sshd_config.d/vim 60-cloudimg-settings.conf and say yes to haven)
+
 - systemctl restart ssh
 Jenkins => SSH => Node
 #########################
@@ -39,3 +41,4 @@ Go to Jenkins => Nodes > nameit> number of executors = 5
 - update SG slave > 22 from Jenkins SG
 - creds with username pass (from slaves machine) id = whatever
 - Hostkey Verification Strategy - non Verification
+- build job, you can choose Automation or manual Nodes 
