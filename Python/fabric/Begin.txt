@@ -1,0 +1,12 @@
+- INstall pip wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+- run script
+- after downloading run: pip install <--libraries-> (pip install python-jenkins)
+- weneed fabric: pip install 'fabric<2.0'
+- Create dir mkdir fabric> cd fabric
+- vim fabfile.py
+- def greeting(msg):
+    print "Good %s" % msg
+- save>> and we can called it from the shell>> fab -l    
+
+- fab greeting:Evening
+- 
