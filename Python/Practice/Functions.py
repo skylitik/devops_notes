@@ -38,4 +38,3 @@ def greetings(MSG="Morning"):
 
 greetings()
 greetings("Evening")
-

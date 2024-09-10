@@ -12,4 +12,4 @@ def vac_feedback(vac, efficacy):
 
 #vac_feedback("Pfizer", 95)
 #vac_feedback("Unknown", 45)
-vac_feedback(efficacy=34, vac="Unknown")
+vac_feedback(efficacy=35, vac="Unknown")

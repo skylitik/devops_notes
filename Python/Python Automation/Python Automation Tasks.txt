@@ -1,0 +1,31 @@
+Tasks:
+- Add Users
+- Add Groups
+- Add Users to group
+- Create directory
+- Assign user & group ownership to directory
+- Test if user or dir exists, if not create it
+- SSH in Python
+- Fabric
+- Webserver provisioning with Python Fabric
+- Python Virtualaenv
+- Python for various other tasks
+
+#######################################
+- connect to script box on vagrant
+- sudo > mkdir /opt/pyscripts> cd to that
+- Create dir for local execution> mkdir ostasks
+- try python or python3 to check if its install
+- >>>import os
+- >>>os.system("ls") if its execute then, must be 0
+- >>>dir(os) - modules check
+- Create file vim check-file.py
+- Check if interpreter exsist ls -l /usr/bin/python3
+- chmod +x for file
+#################################################
+>>> import os
+>>> user="alpha" -create user
+>>> os.system("id {}".format(user))
+#########################################################
+- after all tasks in code ostaskts.py
+- Check ls -ld /opt/science_dir
