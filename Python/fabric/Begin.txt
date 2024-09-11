@@ -9,4 +9,35 @@
 - save>> and we can called it from the shell>> fab -l    
 
 - fab greeting:Evening
-- 
+####################################
+This comand repeat for both machines
+####################################
+- connect to web01 and create the user
+- Edit sudo file: visudo
+- ADD user to sudoers and ex(devops  ALL=(ALL)       NOPASSWD: ALL
+)
+- add config file and enable password based login : vi /etc/ssh/sshd_config
+- search for :PasswordAuthentication: yes
+- systemctl restart sshd
+#######################################
+- try to connect to all instances from scriptbox and check devops user permition
+#########################################
+From scriptbox generate ssh-keygen as root user
+copy ssh keys to devops user
+ssh-copy-id devops@192.168.10.3   (web01 machine and for other machine)
+we now able to login without password
+########################################
+now go to /opt/pyscripts/fabric
+execute script: fabfile.py by using comand:
+fab -H 192.168.10.3 -u devops devops (-p <pasword>) remote_exec
+password is saved in a shell in a history, and we set up a key based login which is smart option
+###########
+fab -H <-ip-> -u devops web_setup:<-adress web->,<-name_dir->
+
+https://www.tooplate.com/zip-templates/2108_dashboard.zip
+you can also add other servers one by one
+fab -H <-ip-> -u devops web_setup:<-adress web->,<-adress web2-><-name_dir->
+
+##############
+Now we can automate system tasks and execution
+
