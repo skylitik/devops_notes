@@ -40,4 +40,14 @@ fab -H <-ip-> -u devops web_setup:<-adress web->,<-adress web2-><-name_dir->
 
 ##############
 Now we can automate system tasks and execution
+pip install virtualenv - in scriptbox
+give a name automation
+#virtualenv automation-env
+now go to dir
+cd automation-env>source bin/activate
+now we can automate
+pip install jenkinsapi
+its get install to virtual environment , not into a system
 
+
+to deactivate this>deactivate

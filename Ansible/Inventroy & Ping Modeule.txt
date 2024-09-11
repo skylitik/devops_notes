@@ -1,0 +1,7 @@
+control machines needs to connect target machines
+connect to control> create dir project
+create dir in project dir for exersices(inventory), never use passwords for inventory\
+use key_file path
+
+
+

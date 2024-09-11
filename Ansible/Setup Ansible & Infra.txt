@@ -1,0 +1,29 @@
+GO to AWS and Create Vm> control
+Ubuntu free tier
+keypair + SG (ssh from my ip)
+########################
+Create 3 machines> name > vprofile_00> count 3
+Centos-9> keypair:client-key
+client-sg>from my ip ssh and (also ansible connect)
+22 from control sg
+disks to 10 G
+launch
+###############
+Rename machines:
+web01, web02, db01
+##################
+
+SSH explained:
+in git bash:
+ls ~/.ssh/known_hosts
+cat ~/.ssh/known_hosts
+we can remove keys with redirection
+cat /dev/null > ~/.ssh/known_hosts
+################################
+
+Installing Ansible 
+update
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+suod apt install ansible -y
+check version:ansible --version
+done

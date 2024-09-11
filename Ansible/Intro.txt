@@ -1,0 +1,29 @@
+History of Automation:
+Perspective:
+
+1. Bash Scripting
+2. Python/Perl/Ruby
+3. Powersehll
+4. Puppet
+5. Salt Stack
+6. Chef
+7. Ansible
+8. Terraform
+
+
+Use Cases:
+- Automation (Any System Automation)
+- Change Managment (Production Server chabges)
+- Provisioning (Setup Server from scratch/ Cloud provisioning)
+- Orchestration (Large scale automation framework)
+
+No Agents (Target machines/Services are accessed by SSH, winrm & API)
+No Databases (YAML,INI & Texts)
+No Complex Setup (It's just a Python Library)
+No residual Software (Push Python package, Execute, Return Output)
+
+YAML - No Programming, Structured
+API - URL/Resfull CAlls, Shell Commands, Scripts
+
+Ansible Connections (SSH to Linux, winrm to Windows, API to Cloud)
+Simplicity is Beauty
