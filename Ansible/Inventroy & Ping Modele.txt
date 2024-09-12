@@ -26,3 +26,5 @@ ansible webservers -m ping -i inventory
 ansible dbservers -m ping -i inventory
 ansible '*' -m ping -i inventory - this for all vms
 ansible 'web*' -m ping -i inventory - for all web servers
+for 3-rd exercise:
+ansible all -m ping -i inventory
