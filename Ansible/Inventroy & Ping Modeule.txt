@@ -1,7 +1,28 @@
 control machines needs to connect target machines
 connect to control> create dir project
-create dir in project dir for exersices(inventory), never use passwords for inventory\
-use key_file path
-
-
-
+create dir in project dir for exersices(inventory), (never use passwords for inventory\
+use key_file path)
+vim [inventory.yml]
+create clientkey file in exersice dir and paste ssh key of the clientkey> wq
+check permission 774 for file key
+~/vprofile/exersice$ - this directory
+try yo connect to machine using comand:
+```ansible web01 -m ping -i inventory```
+change config file ansible to dont ask of fingerprinting , path:
+sudo cat /etc/ansible/ansible.cfg
+go to that path and do backup: mv ansible.cfg ansible.cfg_backup
+ansible-config init --disabled -t all > ansible.cfg
+open file ansible.cfg> search for /host_key_checking=False
+go to ubuntu user and use:ansible web01 -m ping -i inventory
+change permission to: chmod 400 clientkey.pem
+##################################################
+next inventory file: cp exersice1 > exercise2
+vim exercise2 and copy 4y
+change ips of 2 vms
+wq
+try:
+ansible n_virginia -m ping -i inventory
+ansible webservers -m ping -i inventory
+ansible dbservers -m ping -i inventory
+ansible '*' -m ping -i inventory - this for all vms
+ansible 'web*' -m ping -i inventory - for all web servers
