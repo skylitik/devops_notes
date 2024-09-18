@@ -1,0 +1,14 @@
+cp exercise3 -r exercise4
+#check if works> cat  
+ansible web01 -m ansible.builtin.yum -a "name=httpd state=present" -i inventory
+#must be error:then>add to end --become
+#Configuration Managment
+#groups webservers method:
+ansible webservers -m ansible.builtin.yum -a "name=httpd state=present" -i inventory --become
+#Change state to absent - its removing package
+#Change to started and enabled> its do start and enable service
+ansible webservers -m ansible.builtin.service -a "name=httpd state=started enabled=yes" -i inventory --become
+#Copy modul name
+#Create file for webserver
+ansible webservers -m ansible.builtin.copy -a "src=index.html dest=/var/www/html/index.html" -i inventory --become
+#To check index.html add rule for client server 80 from any

@@ -1,0 +1,42 @@
+# Playbooks are written in YAML
+
+-hosts: webservergrp
+ tasks:
+   -yum:
+      name: httpd
+      state: present
+
+# Copy exer4> exer5 & rm -rf index.html
+# Create file web-db.yaml
+---
+- name: Webserver setup
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+    - name: Start service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes
+
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+
+
+# before you run this script remove package, which was early created
+ansible webservers -m yum -a "name=httpd state-absent" -i inventory --become
+# then
+ansible-playbook -i inventory web-db.yaml
+# before run add to the end --syntax-check
+# at the end you can add -C for dry run
+# Read documentation on Ansible
