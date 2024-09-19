@@ -1,2 +1,85 @@
 # cp exercise5 to 6
-# 
+# vim > paste to the end
+  - name: Copy index file
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        backup: yes
+
+# Create dir files
+# Put any text into files/index.html
+ansible-playbook -i inventory web.yaml
+# try to connect to web01
+cd /var/www/html/
+# disconnect > back to control
+# cp exercise 7 from 5
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+    - name: Start mariadb-server
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+    - name: Create a new database with name 'accounts'
+      mysql_db:
+        name: accounts
+        state: present
+ansible-playbook -i inventory db.yaml               
+# failed
+#Connect to db01> search of the mysql python
+yum search python | grep -i mysql
+# disconnect and we need to instal pymysql from playbook
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+
+    - name: Install pymysql  #edited lines
+      ansible.builtin.yum:
+        name: python3-PyMySQL
+        state: present
+
+    - name: Start mariadb-server
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Create a new database with name 'accounts'
+      community.mysql.mysql_db: #added later
+        name: accounts
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock #this line is for socket location
+
+# install community collection module
+ansible-galaxy collection install community.mysql
+
+#community.mysql.mysql_db: is added later after error
+#https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_user_module.html#ansible-collections-community-mysql-mysql-user-module
+- name: Create database user with name 'bob' and password '12345' with all database privileges
+  community.mysql.mysql_user:
+    name: bob
+    password: 12345
+    priv: '*.*:ALL'
+    state: present
+#Edited and added socket.More important to add socket!
+- name: Create database user with name 'res'
+  community.mysql.mysql_user:
+    name: res
+    password: 'admin123'
+    priv: '*.*:ALL'
+    state: present
+    login_unix_socket: /var/lib/mysql/mysql.sock
+

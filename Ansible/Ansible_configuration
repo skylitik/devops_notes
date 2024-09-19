@@ -1,0 +1,26 @@
+Order of Ansible Config
+- ANSIBLE_CONFIG (Environment variable if set)
+- ansible.cfg (in the current dir)
+- ~/.ansible.cfg (in the home dir)
+- /etc/ansible/ansible.cfg
+################################
+#go to vim /etc/ansible/ansible.cfg
+# create your own  vim ansible.cfg
+[defaults]
+host_key_checking=False
+inventory= ./inventory
+forks = 5
+log_path = /var/log/ansible.log
+
+[privilege_escalation]
+become=True
+become_method=sudo
+become_ask_pass=False
+
+# Execute ansible-playbook db.yaml
+# Create log file 
+sudo touch /var/log/ansible.log
+sudo chown ubuntu.ubuntu /var/log/ansible.log
+ansible-playbook db.yaml
+cat /var/log/ansible.log
+ansible-playbook db.yaml -vv
