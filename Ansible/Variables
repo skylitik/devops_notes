@@ -1,0 +1,239 @@
+Variables:
+
+Playbook:
+- hosts: websrvgrp
+  vars:
+    http_port: 80
+    sqluser: admin
+
+Inventory Based:
+In inventory file
+group_vars/all
+group_vars/groupname
+host_vars/hostname
+
+Roles:
+Include variables from files in playbook
+
+
+Fact Variables: setup module
+ansible_os_family:
+OS name like RedHat, Debian etc
+
+ansible_processor_cores:
+Number of CPU cores
+
+ansible_kernel:
+Kernel Version.
+
+ansible_devices:
+Connected Device Information
+
+ansible_default_ipv4:
+IP, MAC address, gateway etc.
+
+ansible_architecture:
+64 bit or 32 bit
+
+Store Outpu: register module:
+
+Module execution (Playbook Tasks)-> Return Output (JSON Format) -> Store Output (Variable to Store)
+
+###Example with variables vim format playbook
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  vars:
+    dbname: electric
+    dbuser: current
+    dbpass: tesla
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+
+    - name: Install pymysql
+      ansible.builtin.yum:
+        name: python3-PyMySQL
+        state: present
+
+    - name: Start mariadb-server
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Create a new database
+      community.mysql.mysql_db:
+        name: "{{dbname}}"
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Create database
+      community.mysql.mysql_user:
+        name: "{{dbname}}"
+        password: "{{dbpass}}"
+        priv: '*.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+####################
+#add debug here
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  vars:
+    dbname: electric
+    dbuser: current
+    dbpass: tesla
+  tasks:
+    - debug:
+        msg: " The dbname is {{dbname}}"
+    - debug:
+        var: dbuser
+
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+
+    - name: Install pymysql
+      ansible.builtin.yum:
+        name: python3-PyMySQL
+        state: present
+
+    - name: Start mariadb-server
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Create a new database
+      community.mysql.mysql_db:
+        name: "{{dbname}}"
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Create database
+      community.mysql.mysql_user:
+        name: "{{dbname}}"
+        password: "{{dbpass}}"
+        priv: '*.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+#######################################################
+#Using debug for Register operations
+#######################################################
+---
+- name: DBserver setup
+  hosts: dbservers
+  become: yes
+  vars:
+    dbname: electric
+    dbuser: current
+    dbpass: tesla
+  tasks:
+    - debug:
+        msg: " The dbname is {{dbname}}"
+    - debug:
+        var: dbuser
+
+    - name: Install mariadb-server
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+
+    - name: Install pymysql
+      ansible.builtin.yum:
+        name: python3-PyMySQL
+        state: present
+
+    - name: Start mariadb-server
+      ansible.builtin.service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Create a new database
+      community.mysql.mysql_db:
+        name: "{{dbname}}"
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Create database
+      community.mysql.mysql_user:
+        name: "{{dbname}}"
+        password: "{{dbpass}}"
+        priv: '*.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+      register: dbout
+
+    - name: print dbout variable
+      debug:
+
+######################################
+#using group vars
+###################################
+# Create new folder group_vars
+# vim group_vars/all
+dbname: sky
+dbuser: pilot
+dbpass: aircraft
+# Hash the previous lecture file 
+# copy exer8 to exer9
+# remove groups vars, db.yaml
+# create vim vars_precendence
+---
+- name: Understanding vars
+  hosts: all
+  become: yes
+  vars:
+    USRNM: playuser
+    COMM: variable from playbook
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: "{{USRNM}}"
+        comment: "{{COMM}}"
+  register: usrout
+
+    - debug:
+        var: usrout
+### u can add specific name to print
+---
+- name: Understanding vars
+  hosts: all
+  become: yes
+  vars:
+    USRNM: playuser
+    COMM: variable from playbook
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: "{{USRNM}}"
+        comment: "{{COMM}}"
+      register: usrout
+    - debug:
+        var: usrout.name
+
+    - debug:
+        var: usrout.comment
+
+# create vim group_vars/webservers
+USRNM: webgroup
+COMM: variable from group_vars/webservers file
+# Hash the lines in playbook
+#vars:
+    #USRNM: playuser
+    #COMM: variable from playbook
+# U can add hostname file 
+#new file indir vim host_vars/web02
+#place hostname
+USRNM: web02user
+COMM: variable from host_vars/web02 file
+
+# one method direction from ansible comand(rarely)
+ansible-playbook -e USRNM=cliuser -e COMM=cliuserbuser vars_persistance.yaml
