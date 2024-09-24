@@ -1,0 +1,46 @@
+Provisioning Server
+1. NTP service on multi OS
+2. Users & Groups
+3. Configuration files
+4. Decision Making
+5. Loops
+6. Templates
+7. Handlers
+8. Ansible Roles
+#####################
+#copy exercises and remove print_facts.yaml and vars_precendence.yaml
+
+ansible -m ping all
+# vim provisioning.yaml
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install ntp agent on centos
+      yum:
+        name: chrony
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: Install ntp agent on ubuntu
+      apt:
+        name: ntp
+        state: present
+        update_cache: yes # before run installation ,update needed
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start service on centos
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"  
+
+    - name: Start service on ubuntu
+      service:
+        name: ntp
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"    
+

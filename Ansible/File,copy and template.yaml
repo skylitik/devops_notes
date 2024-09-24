@@ -1,0 +1,98 @@
+#copy exercise ad to end of ex file
+  - name: Banner file
+      copy:
+        content: '# This server is managed by ansible. No manual changes please.'
+        dest: /etc/motd
+# we have ntp or chrony config file and  need to update
+# login to db01
+cat /etc/chrony.conf
+# copy entire text and put into control machine folder
+# create folder templates on control and file templates/ntpconf_centos
+# paste from cat /etc/chrony.conf (db01)
+# same for ubuntu cat /etc/ntp.conf
+# edit provision file
+
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install ntp agent on centos
+      yum:
+        name: chrony
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: Install ntp agent on ubuntu
+      apt:
+        name: ntp
+        state: present
+        update_cache: yes # before run installation ,update needed
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start service on centos
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Start service on ubuntu
+      service:
+        name: ntp
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Banner file
+      copy:
+        content: '# This server is managed by ansible. No manual changes please.'
+        dest: /etc/motd
+
+    - name: Deploy ntp agent conf on centos
+      template:
+        src: templates/ntpconf_centos
+        dest: /etc/chrony.conf
+        backup: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Deploy ntp agent conf on ubuntu
+      template:
+        src: templates/ntpconf_ubuntu
+        dest: /etc/ntp.conf
+        backup: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: restart service on centos
+      service:
+        name: chronyd
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: restart service on ubuntu
+      service:
+        name: ntp
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+# edit group_vars/all      
+USRNM: commonuser
+COMM: variuable from group_all file
+ntp0: 0.north-america.pool.ntp.org
+ntp1: 1.north-america.pool.ntp.org
+ntp2: 2.north-america.pool.ntp.org
+ntp3: 3.north-america.pool.ntp.org
+
+# then go to templates/ntp_centos and for ubuntu same
+pool "{{ntp0}}" iburst
+pool "{{ntp1}}" iburst
+pool "{{ntp2}}" iburst
+pool "{{ntp3}}" iburst
+
+# for purpose or some reason you can add one more line in provision
+
+- name: Create folder
+  file:
+    path: /opt/test32
+    state: directory

@@ -1,0 +1,56 @@
+# simple loop with install package
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add several users
+      ansible.builtin.user:
+        name: "{{item}}"
+        state: present
+        groups: "devopsik"
+      loops:
+        - User01
+        - It_support
+
+    - name: Install ntp agent on centos
+      yum:
+        name: "{{item}}"
+        state: present
+      when: ansible_distribution == "CentOS"
+      loop:
+        - chrony
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Install ntp agent on ubuntu
+      apt:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+      loop:
+        - ntp
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Start service on centos
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Start service on ubuntu
+      service:
+        name: ntp
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+
+

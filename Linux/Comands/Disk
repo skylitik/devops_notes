@@ -1,3 +1,0 @@
-- Disk space: df -h
-- List all your disks: fdisk -l
-- Edit disk partition: fdisk <---choose path-->

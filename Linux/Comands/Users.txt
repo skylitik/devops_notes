@@ -1,3 +1,0 @@
-List of sudoers: ls -l /etc/sudoers
-Deluser: userdel -r username
---become - used for scripts and when you need sudo priviliege

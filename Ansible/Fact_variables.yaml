@@ -1,0 +1,52 @@
+# collect artifacts (can disable)
+---
+- name: Understanding vars
+  hosts: all
+  become: yes
+  gather_facts: False
+  vars:
+    USRNM: playuser
+    COMM: variable from playbook
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: "{{USRNM}}"
+        comment: "{{COMM}}"
+      register: usrout
+    - debug:
+        var: usrout.name
+
+    - debug:
+        var: usrout.comment
+# Now can execute comand 
+ansible -m setup web01 # Showing list of available lists and variables for executing in ansible
+### next
+# vim print_facts.yaml
+---
+- name: Print facts
+  hosts: all
+  tasks:
+    - name: Print OS name
+      debug:
+        var: ansible_distribution 
+
+# Execute 
+ansible-playbook print_facts.yaml
+# Executing RAM memory
+---
+- name: Print facts
+  hosts: all
+  tasks:
+    - name: Print OS name
+      debug:
+        var: ansible_distribution 
+    - name: Print selinux mode
+      debug:
+        var: ansible_selinux.mode
+    - name: Print RAM memory
+      debug:
+        var: ansible_memory_mb.real.free
+# Prinitng processor name,add to the end
+    - name: Print Processor name
+      debug:
+        var: ansible_processor[2]
