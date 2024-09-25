@@ -1,0 +1,220 @@
+#Create files folder
+# vim files/myfile.txt
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  vars:
+    mydir: /opt/dir22 #changed
+  tasks:
+    - name: Install ntp agent on centos
+      yum:
+        name: chrony
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: Install ntp agent on ubuntu
+      apt:
+        name: ntp
+        state: present
+        update_cache: yes # before run installation ,update needed
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start service on centos
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Start service on ubuntu
+      service:
+        name: ntp
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Banner file
+      copy:
+        content: '# This server is managed by ansible. No manual changes please.'
+        dest: /etc/motd
+
+    - name: Create folder
+      file:
+        path: "{{mydir}}" #changed
+        state: directory
+
+    - name: Deploy ntp agent conf on centos
+      template:
+        src: templates/ntpconf_centos
+        dest: /etc/chrony.conf
+        backup: yes
+      when: ansible_distribution == "CentOS"
+      notify:
+        - restart service on centos
+
+    - name: Deploy ntp agent conf on ubuntu
+      template:
+        src: templates/ntpconf_ubuntu
+        dest: /etc/ntp.conf
+        backup: yes
+      when: ansible_distribution == "Ubuntu"
+      notify:
+        - restart service on ubuntu
+    - name: Dump file
+      copy:
+        src: files/myfile.txt
+        dest: /tmp/myfile.txt
+
+  handlers:
+    - name: restart service on centos
+      service:
+        name: chronyd
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: restart service on ubuntu
+      service:
+        name: ntp
+        state: restarted
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+# Create folder roles
+# Go to folder 
+ansible-galaxy init post-install
+cd ..
+cat group_vars/all # copy all vairiables
+#USRNM: commonuser
+#COMM: variuable from group_all file
+#ntp0: 0.north-america.pool.ntp.org
+#ntp1: 1.north-america.pool.ntp.org
+#ntp2: 2.north-america.pool.ntp.org
+#ntp3: 3.north-america.pool.ntp.org
+# add ^
+vim roles/post-install/vars/main.yaml
+#add -> /opt/dir22
+# rm group vars and hosts vars
+# copy files
+cp files/* roles/post-install/files/
+# copy templates
+cp templates/* roles/post-install/templates/
+############
+# copy from provision handlers section to roles/post-install/handlers/main.yaml file
+# copy tasks to roles/post-install/tasks/main.yml
+# open provisioning and remove variables, all tasks
+#now its look like this
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  roles:
+    - post-install
+
+# del files and templates folders
+# sample from bash
+├── ansible.cfg
+├── inventory
+├── provisioning.yaml
+├── res-client.pem
+└── roles
+    └── post-install
+        ├── README.md
+        ├── defaults
+        │   └── main.yml
+        ├── files
+        │   └── myfile.txt
+        ├── handlers
+        │   └── main.yml
+        ├── meta
+        │   └── main.yml
+        ├── tasks
+        │   └── main.yml
+        ├── templates
+        │   ├── ntpconf_centos
+        │   └── ntpconf_ubuntu
+        ├── tests
+        │   ├── inventory
+        │   └── test.yml
+        └── vars
+            ├
+            └── main.yml
+# open tasks.yml
+---
+# tasks file for post-install
+- name: Install ntp agent on centos
+  yum:
+    name: chrony
+    state: present
+  when: ansible_distribution == "CentOS"
+
+- name: Install ntp agent on ubuntu
+  apt:
+    name: ntp
+    state: present
+    update_cache: yes 
+  when: ansible_distribution == "Ubuntu"
+
+- name: Start service on centos
+  service:
+    name: chronyd
+    state: started
+    enabled: yes
+  when: ansible_distribution == "CentOS"
+
+- name: Start service on ubuntu
+  service:
+    name: ntp
+    state: started
+    enabled: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Banner file
+  copy:
+    content: '# This server is managed by ansible. No manual changes please.'
+    dest: /etc/motd
+
+- name: Create folder
+  file:
+    path: "{{mydir}}"
+    state: directory
+
+- name: Deploy ntp agent conf on centos
+  template:
+    src: ntpconf_centos.j2 #del templates and ad extension j2
+    dest: /etc/chrony.conf
+    backup: yes
+  when: ansible_distribution == "CentOS"
+  notify:
+    - restart service on centos
+
+- name: Deploy ntp agent conf on ubuntu
+  template:
+    src: ntpconf_ubuntu.j2 #del templates and ad extension j2
+    dest: /etc/ntp.conf
+    backup: yes
+  when: ansible_distribution == "Ubuntu"
+  notify:
+    - restart service on ubuntu
+
+- name: Dump file
+  copy:
+    src: myfile.txt #files deleted
+    dest: /tmp/myfile.txt
+# go to templates
+mv ntpconf_centos ntpconf_centos.j2
+mv ntpconf_ubuntu ntpconf_ubuntu.j2
+# cd
+# in exerc 15 add to provision ntp service
+---
+- name: Provisioning servers
+  hosts: all
+  become: yes
+  roles:
+    - role: post-install
+      vars:
+        ntp0: 0.pt.pool.ntp.org
+        ntp1: 1.pt.pool.ntp.org
+        ntp2: 2.pt.pool.ntp.org
+        ntp3: 3.pt.pool.ntp.org
