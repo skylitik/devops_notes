@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"e8901a2650cc707c","type":"group","x":380,"y":40,"width":680,"height":280,"color":"2","label":"Elastic Beanstalk"},
+		{"id":"7abb9b2710ecb33b","type":"group","x":600,"y":127,"width":420,"height":153,"color":"2","label":"Autoscalling group"},
+		{"id":"615a182273b3811e","type":"text","text":"Users","x":-660,"y":-140,"width":250,"height":60,"color":"4"},
+		{"id":"a1b48bd4bcb70e1e","type":"text","text":"Amazon [[Route53]]","x":-272,"y":-140,"width":250,"height":60,"color":"2"},
+		{"id":"a53b67caf732af08","type":"text","text":"Amazon CloudFront","x":84,"y":-141,"width":250,"height":60,"color":"2"},
+		{"id":"be2da2aea2aad27f","type":"text","text":"Artifacts in Bucket","x":1180,"y":10,"width":250,"height":60,"color":"1"},
+		{"id":"bc295cbf5ee5662b","type":"text","text":"Amazon CloudWatch","x":860,"y":-171,"width":250,"height":60,"color":"2"},
+		{"id":"3a98fa8e84e9a7b0","type":"text","text":"Amazon MQ","x":660,"y":431,"width":250,"height":60,"color":"1"},
+		{"id":"c55e7aeec913c266","type":"text","text":"Memchached","x":664,"y":666,"width":250,"height":60,"color":"#004bfa"},
+		{"id":"b6b7a4cb2797a256","type":"text","text":"MySQL M [[RDS]]","x":165,"y":668,"width":250,"height":60,"color":"#066ff9"},
+		{"id":"e195dd4e60366b67","type":"text","text":"Application Load Balancer","x":400,"y":130,"width":160,"height":120,"color":"2"},
+		{"id":"0c21bdf79ef43330","type":"text","text":"Instances\n","x":640,"y":160,"width":160,"height":60,"color":"2"},
+		{"id":"d12e5474b24fe7b2","type":"text","text":"Apache Tomcat","x":800,"y":160,"width":185,"height":60,"color":"2"}
+	],
+	"edges":[
+		{"id":"e85bd4a8fb4c23c1","fromNode":"615a182273b3811e","fromSide":"right","toNode":"a1b48bd4bcb70e1e","toSide":"left"},
+		{"id":"49de5f9b16b99bae","fromNode":"a1b48bd4bcb70e1e","fromSide":"right","toNode":"a53b67caf732af08","toSide":"left"},
+		{"id":"ca37e815ccbbac06","fromNode":"a53b67caf732af08","fromSide":"bottom","toNode":"e195dd4e60366b67","toSide":"top"},
+		{"id":"dc19ffe858869ec8","fromNode":"e195dd4e60366b67","fromSide":"right","toNode":"0c21bdf79ef43330","toSide":"left"},
+		{"id":"bf4a52e5e581b7c9","fromNode":"bc295cbf5ee5662b","fromSide":"bottom","toNode":"0c21bdf79ef43330","toSide":"top"},
+		{"id":"0b5fffd28a5a21ca","fromNode":"bc295cbf5ee5662b","fromSide":"bottom","toNode":"e195dd4e60366b67","toSide":"top"},
+		{"id":"fd9c6bb070bf824a","fromNode":"be2da2aea2aad27f","fromSide":"bottom","toNode":"d12e5474b24fe7b2","toSide":"right"},
+		{"id":"9208e476025458fc","fromNode":"0c21bdf79ef43330","fromSide":"bottom","toNode":"3a98fa8e84e9a7b0","toSide":"top"},
+		{"id":"506b46170e7a70bc","fromNode":"3a98fa8e84e9a7b0","fromSide":"bottom","toNode":"c55e7aeec913c266","toSide":"top"},
+		{"id":"1393f114f4a25fe1","fromNode":"c55e7aeec913c266","fromSide":"left","toNode":"b6b7a4cb2797a256","toSide":"right"}
+	]
+}
