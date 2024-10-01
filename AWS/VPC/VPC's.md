@@ -1,7 +1,8 @@
 [[Corporate Datacenter 2024-09-30 10.37.38.excalidraw]]
-[[VPC Network 2024-09-30 11.01.33.excalidraw]]
+[[VPC Network.excalidraw]]
 [[AmazonVPC.excalidraw]]
-
+[[VPC Diagram - Public and Private Subnets.excalidraw]]
+----
 
 VPC - Virtual Private Cloud
 
@@ -18,3 +19,7 @@ VPC - Virtual Private Cloud
 * 255.0.0.0
 * 255.255.0.0
 * 255.255.255.0
+
+#NAT to enable instances in a private subnet to connect to the internet or other AWS services
+
+An internet #gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet.
