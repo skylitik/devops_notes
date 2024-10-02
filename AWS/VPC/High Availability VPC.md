@@ -1,6 +1,6 @@
 [[High Availabillity VPC.excalidraw]]
 Region: us-west-1
-VPC Range 172.20.0.0/16
+VPC Range 172.20.0.0/16 [[Create VPC]]
 4 subnets: 2 pub sub, 2 priv sub
 2 zones: us-west-1a, us-west-1b
 172.20.1.0/24 => pub-sub1 [us-west-1a]
@@ -9,7 +9,7 @@ VPC Range 172.20.0.0/16
 172.20.4.0/24 => priv-sub1 [us-west-1b]
 1 Internet GW
 2 NAT Gateway
-1 EIP
+2 EIP
 2 Route Tables: 1 Pub Sub RT, 1 Pub Sub RT
 1 Bastion host in Pub subnet
 ______

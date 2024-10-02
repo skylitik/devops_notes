@@ -1,4 +1,4 @@
-[[Corporate Datacenter 2024-09-30 10.37.38.excalidraw]]
+[[Corporate Datacenter.excalidraw]]
 [[VPC Network.excalidraw]]
 [[AmazonVPC.excalidraw]]
 [[VPC Diagram - Public and Private Subnets.excalidraw]]
@@ -9,7 +9,7 @@ VPC - Virtual Private Cloud
 * VPC is a logical data center within an AWS Region
 * VPC is an on-demand configurable pool of shared computing resources allocated within a public cloud environment.
 * Control over network environment, select IP address range, subnets and configure route tables and gateways.
-
+0.0.0.0/0 - All ip's
 
 #Private_IP_Ranges
 * Class A 10.0.0.0 - 10.255.255.255
@@ -23,3 +23,15 @@ VPC - Virtual Private Cloud
 #NAT to enable instances in a private subnet to connect to the internet or other AWS services
 
 An internet #gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet.
+___
+
+If the subnets are routing the traffic
+
+through the route table to internet gateway,
+
+then that is a ==public subnet==.
+
+If the subnets are routing traffic to NAT gateway,
+
+that is a ==private subnet==.
+___
