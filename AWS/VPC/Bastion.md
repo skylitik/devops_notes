@@ -8,6 +8,7 @@ ___
 15m0-bastion-key
 ___
 ## Instance
+name - bastion
 For corporate things use CIS Ubuntu Linux (AMI)
 For study Plain Ubuntu Server 22
 Key pair => 15m0-bastion-key
