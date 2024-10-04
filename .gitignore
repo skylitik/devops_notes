@@ -1,6 +1,6 @@
 #ignoring folders
 Vagrant/
-
+trigerfinger/
 #package
 *.rar
 *.zip

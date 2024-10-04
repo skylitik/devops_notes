@@ -1,0 +1,1 @@
+bping [[-c]] 4 --adress--

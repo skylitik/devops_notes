@@ -1,0 +1,1 @@
+The `-c` option tells ping program to stop after sending (or receiving ) specified number of `ECHO_RESPONSE` packets.

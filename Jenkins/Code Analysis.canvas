@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"8febd5c5ee8f5844","type":"group","x":-340,"y":-260,"width":1240,"height":300,"label":"Jenkins"},
+		{"id":"78d880a543319ea9","type":"text","text":"Developer\n","x":-700,"y":-120,"width":250,"height":60,"color":"4"},
+		{"id":"2bfb3519daad36ad","type":"text","text":"Fetch Code\n(Git)","x":-320,"y":-136,"width":160,"height":116,"color":"#b6ecbf"},
+		{"id":"b6fe2c9d833049e6","x":-70,"y":-135,"width":112,"height":115,"color":"#fb8eb4","type":"text","text":"Build\nMaven"},
+		{"id":"bfe92f5f5cf60996","x":115,"y":-135,"width":145,"height":115,"color":"3","type":"text","text":"Unit Test\nMaven"},
+		{"id":"6da276d0faaf6bd5","x":366,"y":-136,"width":194,"height":116,"color":"#a42d2d","type":"text","text":"Code Analysis\nSonarqube"},
+		{"id":"9e4a80956100f2f4","x":372,"y":-360,"width":119,"height":60,"color":"6","type":"text","text":"Gate"},
+		{"id":"2fdb4c795cd534b9","x":338,"y":-600,"width":188,"height":140,"color":"3","type":"text","text":"Sonarqube"},
+		{"id":"352b648063cc5763","x":652,"y":-136,"width":148,"height":116,"color":"5","type":"text","text":"Upload Artifact\nArtifacts"},
+		{"id":"41da4c2ca274e1da","x":700,"y":-598,"width":200,"height":138,"color":"#3fd9ba","type":"text","text":"NexusOSS\nSonatype"},
+		{"id":"46bafa9ac058d934","type":"text","text":"Github","x":-365,"y":-460,"width":250,"height":60,"color":"#5069ce"}
+	],
+	"edges":[
+		{"id":"560b347c60effec0","fromNode":"78d880a543319ea9","fromSide":"right","toNode":"46bafa9ac058d934","toSide":"left"},
+		{"id":"e8793950b506061b","fromNode":"46bafa9ac058d934","fromSide":"bottom","toNode":"2bfb3519daad36ad","toSide":"top"},
+		{"id":"07e328f88c76a573","fromNode":"2bfb3519daad36ad","fromSide":"right","toNode":"b6fe2c9d833049e6","toSide":"left"},
+		{"id":"046df23bdb47b611","fromNode":"b6fe2c9d833049e6","fromSide":"right","toNode":"bfe92f5f5cf60996","toSide":"left"},
+		{"id":"0e862e186e7be99a","fromNode":"bfe92f5f5cf60996","fromSide":"right","toNode":"6da276d0faaf6bd5","toSide":"left"},
+		{"id":"1b57788a69e28e9a","fromNode":"2fdb4c795cd534b9","fromSide":"bottom","toNode":"9e4a80956100f2f4","toSide":"top"},
+		{"id":"0eb45f96d77d6809","fromNode":"9e4a80956100f2f4","fromSide":"bottom","toNode":"6da276d0faaf6bd5","toSide":"top"},
+		{"id":"bbe88409370e580f","fromNode":"6da276d0faaf6bd5","fromSide":"right","toNode":"352b648063cc5763","toSide":"left"},
+		{"id":"506cf33aeafc0fe4","fromNode":"352b648063cc5763","fromSide":"top","toNode":"41da4c2ca274e1da","toSide":"bottom"}
+	]
+}
