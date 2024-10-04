@@ -36,4 +36,20 @@ after all clean logs in ami
 rm -rf /tmp/logs-wave/*
 ___
 Cloud Watch you can see logs, monitor metrics
+___
+# Create Role for using CloudWatch
+IAM => Create role =>Aws services => EC2 =>s3fullAccess and CloudWatchLogsFullAccess
+RoleName: log-admin-role
+___
+Remove the previous credentials on AMI
+rm -rf /.aws/credentials
+aws s3 ls
+___
+Go to Aws and edit AMIs:
+Actions=>Security=>Modify IAM role=>log-admin
+___
+on Ami
+yum install awslogs -y
+vim /etc/awslogs/awslogs.conf
 
+# Install Cloud Watch on ami
