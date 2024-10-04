@@ -1,7 +1,7 @@
 $connectTestResult = Test-NetConnection -ComputerName staccne01.file.core.windows.net -Port 445
 if ($connectTestResult.TcpTestSucceeded) {
     # Save the password so the drive will persist on reboot
-    cmd.exe /C "cmdkey /add:`"staccne01.file.core.windows.net`" /user:`"localhost\staccne01`" /pass:`"SmOWO7Xzd7vnLXWHhSuP3wJOFIthI5kR6jc7ptxU0LO7XyPBg+mw6uswjQTuQbqjSX/a0Twwus0Y+ASt74P6hA==`""
+    cmd.exe /C "cmdkey /add:`"staccne01.file.core.windows.net`" /user:`"localhost\staccne01`" /pass:`""#paste pass"
     # Mount the drive
     New-PSDrive -Name W -PSProvider FileSystem -Root "\\staccne01.file.core.windows.net\zasoby" -Persist
 } else {
