@@ -51,5 +51,29 @@ ___
 on Ami
 yum install awslogs -y
 vim /etc/awslogs/awslogs.conf
+#insert to the end of file
+[/var/log/messages]
+datetime_format = %b %d %H:%M:%S
+file = /var/log/messages
+buffer_duration = 5000
+log_stream_name = web01-sys-logs
+initial_position = start_of_file
+log_group_name = wave-web
+
+[/var/log/httpd/access_log]
+datetime_format = %b %d %H:%M:%S
+file = /var/log/httpd/access_log
+buffer_duration = 5000
+log_stream_name = web01-httpd-access
+initial_position = start_of_file
+log_group_name = wave-web
+
+:wq
+___
+
+systemctl restart awslogsd
+systemctl enable awslogsd
+cat /var/log/httpd/access_log
+vim /var/aws
 
 # Install Cloud Watch on ami
