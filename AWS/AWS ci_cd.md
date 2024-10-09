@@ -1,6 +1,6 @@
 [[AWS ci_cd.excalidraw]]
 Outline
-1. [[Beanstalk process config]]
+1. [[1_Beanstalk process config]]
 2. AWS RDS
 3. Bitbucket repo
 4. Migrate from Github to Bitbucket

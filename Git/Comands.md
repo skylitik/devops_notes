@@ -1,6 +1,6 @@
 #### Local Config
 
-|             git status              |                     status                     |
+| git status                          |                     status                     |
 | ----------------------------------- | ---------------------------------------------- |
 | git init                            | Initalize directory                            |
 | git add .                           | add actual directory to stage                  |
@@ -12,7 +12,7 @@
 | git show <-id->                     | show commit history with id                    |
 | git branch -c <-name->              | add brucnh                                     |
 | git branch -a                       | list branches                                  |
-| git checkout <--> (switch)          | switch branches                                |
+| git checkout <--> (#switch)         | switch branches                                |
 | git rm <-->                         | remove file                                    |
 | git merge <-->                      | merge branch to actual branch                  |
 | git clone <--URL->                  | clone repo to repo                             |
