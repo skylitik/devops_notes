@@ -1,5 +1,5 @@
 Install docker engine in Jenkins
- * add jenkins user to docker group & reboot
+ * add jenkins user to #docker_group & reboot 
 Install AWS cli
 IAM user with ecr permission
 Create ECR repo

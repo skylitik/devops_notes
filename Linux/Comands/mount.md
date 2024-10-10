@@ -1,1 +1,0 @@
-Comand for mounting filesystem

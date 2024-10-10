@@ -1,1 +1,0 @@
-Ignore case distinctions and give the number of that occurrence
