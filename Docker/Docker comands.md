@@ -1,25 +1,27 @@
 
-| ## Comands                                                                                                                | ## Description                                |
-| ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| dockers ps                                                                                                                | show containers run                           |
-| docker ps -a                                                                                                              | show dead containers                          |
-| docker run                                                                                                                | #Create_container                             |
-| docker images                                                                                                             | List Images locally                           |
-| docker exec                                                                                                               | Executes comands on containers.               |
-| docker rmi                                                                                                                | Remove docker images                          |
-| docker inspect                                                                                                            | #Detail_of_container_image                    |
-| docker start/restart/rm/                                                                                                  | -                                             |
-| docker pull <-name->                                                                                                      | Pull to machine image                         |
-| docker run --name myweb -p 7080:80 -d nginx                                                                               | Start, name, #background , image, #open_ports |
-| docker stop <-name or id->                                                                                                | #Stop                                         |
-| docker exec -it <-name-> /bin/bash (or sh)                                                                                | #Connect_to_docker_container                  |
-| apt install procps -y                                                                                                     | Install in container #process registry        |
-| docker logs <-containername->                                                                                             | #docker_logs                                  |
-| docker run -d -P nginx                                                                                                    | #background automatic #Port_mapping           |
-| docker run --name <-name->-d -e MYSQL_ROOT_PASSWORD=<-pass-> -p 3030:3306 -v /home/ubuntu/folder:/var/lib/mysql mysql:5.7 | #Run_db_inbackgrnd_with_port_volume           |
-| docker volume create <-name->                                                                                             | #Create_volume_docker                         |
-| docker volume ls                                                                                                          | #List_volumes_docker                          |
-| mysql -h <-ip_adress_container-> -u root -ppass                                                                           | #Connect_to_mysql_service_from_docker         |
+| ## Comands                                                                                                                | ## Description                                                                |
+| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| apt install procps -y                                                                                                     | Install in container #process registry                                        |
+| docker build -t <-name_file-> .                                                                                           | #Building_docker                                                              |
+| docker exec                                                                                                               | Executes comands on containers.                                               |
+| docker exec -it <-name-> /bin/bash (or sh)                                                                                | #Connect_to_docker_container                                                  |
+| docker images                                                                                                             | #List_of_Images                                                               |
+| docker inspect                                                                                                            | #Detail_of_container_image                                                    |
+| docker logs <-containername->                                                                                             | #docker_logs                                                                  |
+| docker ps -a                                                                                                              | show dead containers                                                          |
+| docker pull <-name->                                                                                                      | Pull to machine image                                                         |
+| docker rmi                                                                                                                | Remove docker images                                                          |
+| docker run                                                                                                                | #Create_container                                                             |
+| docker run --name <-name->-d -e MYSQL_ROOT_PASSWORD=<-pass-> -p 3030:3306 -v /home/ubuntu/folder:/var/lib/mysql mysql:5.7 | #Run_db_inbackgrnd_with_port_volume                                           |
+| docker run --name myweb -p 7080:80 -d nginx                                                                               | #Start_docker, #background , #open_ports                                      |
+| docker run -d -P nginx                                                                                                    | #background automatic #Port_mapping                                           |
+| docker start/restart/rm/                                                                                                  | -                                                                             |
+| docker stop <-name or id->                                                                                                | #Stop                                                                         |
+| docker volume create <-name->                                                                                             | #Create_volume_docker                                                         |
+| docker volume ls                                                                                                          | #List_volumes_docker                                                          |
+| dockers ps                                                                                                                | show containers run                                                           |
+| mysql -h <-ip_adress_container-> -u root -ppass                                                                           | #Connect_to_mysql_service_from_docker                                         |
+| vim Dockerfile                                                                                                            | #Create_dockerfile [[Docker/Docker files/Webconfig02/Dockerfile\|Dockerfile]] |
 ###### Ex1
 * Docker dir: /var/lib/docker/containers
 * check the id: docker ps
@@ -47,3 +49,12 @@ ___
 * #docker_logs 
 * #Connect_to_mysql_service_from_docker 
 ___
+###### Build Images
+* #Download 
+* #Create_folder 
+* #Archiving 
+* #Create_dockerfile 
+* #Building_docker 
+* #List_of_Images 
+* #Start_docker  9080:80
+* 
