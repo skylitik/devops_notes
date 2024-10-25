@@ -2,16 +2,18 @@
 | ## Comands                                                                                                                | ## Description                                                                |
 | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | apt install procps -y                                                                                                     | Install in container #process registry                                        |
-| docker build -t <-name_file-> .                                                                                           | #Building_docker                                                              |
+| docker build -t <-name_file-> .                                                                                           | #Docker_build (you can locate folder at the end `cmd/`)                       |
 | docker exec                                                                                                               | Executes comands on containers.                                               |
 | docker exec -it <-name-> /bin/bash (or sh)                                                                                | #Connect_to_docker_container                                                  |
-| docker images                                                                                                             | #List_of_Images                                                               |
-| docker inspect                                                                                                            | #Detail_of_container_image                                                    |
+| docker images                                                                                                             | #Docker_images command to show images                                         |
+| docker inspect                                                                                                            | #Docker_inspect Show Detail of container image                                |
+| docker login                                                                                                              | #Docker_login Access to your account with cli                                 |
 | docker logs <-containername->                                                                                             | #docker_logs                                                                  |
 | docker ps -a                                                                                                              | show dead containers                                                          |
 | docker pull <-name->                                                                                                      | Pull to machine image                                                         |
+| docker push <-name of image->                                                                                             | #Docker_push  image to hub with tag                                           |
 | docker rmi                                                                                                                | Remove docker images                                                          |
-| docker run                                                                                                                | #Create_container                                                             |
+| docker run                                                                                                                | #Docker_run Create a container                                                |
 | docker run --name <-name->-d -e MYSQL_ROOT_PASSWORD=<-pass-> -p 3030:3306 -v /home/ubuntu/folder:/var/lib/mysql mysql:5.7 | #Run_db_inbackgrnd_with_port_volume                                           |
 | docker run --name myweb -p 7080:80 -d nginx                                                                               | #Start_docker, #background , #open_ports                                      |
 | docker run -d -P nginx                                                                                                    | #background automatic #Port_mapping                                           |
@@ -54,7 +56,30 @@ ___
 * #Create_folder 
 * #Archiving 
 * #Create_dockerfile 
-* #Building_docker 
+* #Docker_build 
 * #List_of_Images 
 * #Start_docker  9080:80
-* 
+###### Push to dockerhub
+* #Docker_build with parameter <user_docker->/<-name_file->
+* #Docker_login
+* #Docker_push 
+###### Entrypoint and CMD
+* #Create_folder EntryCMD: [[Folders_entrypoint]]
+1. cmd:
+* #Docker_build  printer:v1 cmd/
+* #Docker_images 
+* #Docker_run printer:v1
+___
+2. entry:
+* #Docker_build printer:v2 entry/
+* #Docker_run printer:v2 (put the argument here, hello or something)
+In a dockerfile, or when you #Docker_inspect any image and you see ENTRYPOINT have command but does not have any argument, it means that user needs to pass the argument.
+___
+3. entrycmd:
+* #Docker_build printer:v3 entrycmd/
+* #Docker_run printer:v3
+In this case you can add argument or left how it is
+###### Docker-composer
+All instructions in google, after installing and do folder executable +x.
+1. Create file `app.py` and `requiremnts.txt`
+2. Create Dockerfile

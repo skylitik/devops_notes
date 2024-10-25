@@ -100,3 +100,11 @@ ___
 * USER => Sets the user name (or UID)
 * ARG => Defines a variable that users can pass at build-time
 * ONBUILD => Adds to the image a *trigger* instruction to be executed at a later time
+# Command & Entrypoint
+* FROM ubuntu CMD ["echo hi"] => docker run printer
+* FROM ubuntu ENTRYPOINT ["echo"] => docker run printer hi
+* FROM ubuntu ENTRYPOINT [echo] CMD ["hi"] => docker run printer
+							  	      => docker run printer hello
+
+# Docker Compose
+It's tool to run multicontainers together
