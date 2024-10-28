@@ -24,6 +24,10 @@
 | dockers ps                                                                                                                | show containers run                                                           |
 | mysql -h <-ip_adress_container-> -u root -ppass                                                                           | #Connect_to_mysql_service_from_docker                                         |
 | vim Dockerfile                                                                                                            | #Create_dockerfile [[Docker/Docker files/Webconfig02/Dockerfile\|Dockerfile]] |
+| docker-compose up                                                                                                         | #Docker_compose_start -d                                                      |
+| docker-compose down                                                                                                       | #Docker_compose_stop                                                          |
+| docker-compose ps                                                                                                         | #Docker_compose_process                                                       |
+| docker-compose top                                                                                                        | #Docker_compose_show_pid_ppid_comands                                         |
 ###### Ex1
 * Docker dir: /var/lib/docker/containers
 * check the id: docker ps
@@ -82,4 +86,11 @@ In this case you can add argument or left how it is
 ###### Docker-composer
 All instructions in google, after installing and do folder executable +x.
 1. Create file `app.py` and `requiremnts.txt`
-2. Create Dockerfile
+2. Create Dockerfile  # in Compose folder
+3. Create `docker-compose.yml`
+4. #Docker_compose_start 
+5. #Docker_compose_stop
+6. Edit Dockerfile in compose set folder and add [[compose_add_volumes]]
+7. #Docker_compose_start #Run_in_background 
+8. #Docker_compose_process 
+9. #Docker_compose_show_pid_ppid_comands 

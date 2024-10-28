@@ -1,6 +1,6 @@
 #### Local Config
 
-| git status                          |                     status                     |
+| git status                          | status                                         |
 | ----------------------------------- | ---------------------------------------------- |
 | git init                            | Initalize directory                            |
 | git add .                           | add actual directory to stage                  |
@@ -20,6 +20,7 @@
 | git diff                            | see the difference                             |
 | git restore --staged <--name->      | rollback not commit                            |
 | git revert HEAD                     | rollback alternative                           |
+| git clone -b <-url->                | #Git_clonnig_with_name_of_branch               |
 
 
 #### Remote Repository

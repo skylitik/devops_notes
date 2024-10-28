@@ -8,6 +8,6 @@
 | -r            | #Recursively                                                                                                     |
 | -y            | Yes for installation                                                                                             |
 | >>            | Storing output                                                                                                   |
-| -d            | Run in #background                                                                                               |
+| -d            | #Run_in_background                                                                                               |
 | -P            | #Port_mapping                                                                                                    |
 | -e            | #Variable                                                                                                        |
