@@ -21,3 +21,4 @@
 | tar xzvf <--file-->        | #Unpack                      |
 | touch file{1..10}.txt      | Create 10 files              |
 | wget <--link->             | #Download                    |
+| >                          | #redirecting                 |
