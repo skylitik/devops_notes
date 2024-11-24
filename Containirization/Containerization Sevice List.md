@@ -1,0 +1,16 @@
+### Image Names
+MySQL (Database SVC)        => 8.0.33
+Memcache (DB Caching SVC)   => 1.6
+RabbitMQ (Broker/Queue SVC) => 4.0
+JDK                         => JDK 21
+MAVEN                       => Maven 3.9.9
+Tomcat (Application SVC)    => 10, jdk21
+Nginx (Web SVC)             => 1.27
+
+#### Tags
+mysql:8.0.33
+memcache:latest
+rabbitmq:latest
+maven:3.9.9-eclipse-temurin-21-jammy
+tomcat:10-jdk21
+nginx:latest
